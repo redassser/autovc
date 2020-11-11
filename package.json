@@ -1,0 +1,24 @@
+{
+  "name": "autovc",
+  "description": "Always have a vc open",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "12.18.3"
+  },
+  "keywords": [
+    "cool",
+    "epic",
+    "nice"
+  ],
+  "author": "Pie",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "dotenv": "^8.2.0"
+  }
+}
