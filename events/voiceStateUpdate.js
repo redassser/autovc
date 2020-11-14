@@ -13,6 +13,7 @@ module.exports = (client, oldmember, newmember) => {
     function checkLatest(id) {
         if(newmember.channel.members.size>1) {return;}
         var chanarray = []; const parnt = newmember.channel.parent
+        if(parnt.children.has(channel => channel.members.first()===undefined)) {return;}
         parnt.children.each(channel => chanarray.push(channel.id))
         if(chanarray.includes(id)) {
             parnt.guild.channels.create("auto-vc",
