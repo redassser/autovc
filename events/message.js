@@ -8,7 +8,7 @@ module.exports = (client, message) => {
     ];
     if(possCommands.includes(message.content.toLowerCase())) {
         if (!message.member.permissionsIn(message.channel).has("ADMINISTRATOR")) {message.channel.send("Sorry! Admins only");return;}
-        if (message.guild.channels.cache.find(h=>h.type==="category"&&h.name==="auto-vc")) {message.channel.send("You already have an autovc!");return;}
+        if (message.guild.channels.cache.find(h=>h.type==="category"&&h.name==="auto-vc")) {message.channel.send("You already have an `auto-vc`!");return;}
         message.guild.channels.create("auto-vc",
             {
                 type: "category",
@@ -22,6 +22,8 @@ module.exports = (client, message) => {
                     bitrate: 72000
                 }
             );
+        }).then(()=>{
+            message.channel.send("Your `auto-vc` has been created!")
         })
     }
 }
