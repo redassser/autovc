@@ -30,19 +30,16 @@ module.exports = (client, oldmember, newmember) => {
         var emptychanarray = []; const parnt = oldmember.channel.parent
         parnt.children.filter(channel => channel.members.first()===undefined)
         .each(channel => emptychanarray.push(channel))
+        
         if(emptychanarray.length>1) {
-            for(let x=0;x<emptychanarray.length-1;x++) {
-                var dead = emptychanarray[x]
-                var sad = parnt.guild.channels.cache.find(h=>h.id==dead)
-                sad.delete().catch();
-            }
-            sad.delete();
+            var xnum = emptychanarray.length-1
         } else if (newmember.channel.parent.name=="auto-vc"&&emptychanarray.length===1) {
-            for(let x=0;x<emptychanarray.length;x++) {
-                var dead = emptychanarray[x]
-                var sad = parnt.guild.channels.cache.find(h=>h.id==dead)
-                sad.delete().catch();
-            }
+            var xnum = emptychanarray.length
+        }
+        for(let x=0;x<xnum;x++) {
+            var dead = emptychanarray[x]
+            var sad = parnt.guild.channels.cache.find(h=>h.id==dead)
+            sad.delete()
         }
     }
 }
