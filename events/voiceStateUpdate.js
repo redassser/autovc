@@ -1,7 +1,7 @@
 const { VoiceBroadcast } = require("discord.js");
 
 module.exports = (client, oldmember, newmember) => {
-    if(!newmember.guild.members.cache.get(client.user.id).hasPermission("MANAGE_CHANNELS")) {newmember.member.send("Sorry! I don't have the ``manage_messages`` permission!");return;}
+    if(!newmember.guild.members.cache.get(client.user.id).hasPermission("MANAGE_CHANNELS")) {newmember.member.send("Sorry! I don't have the ``manage channels`` permission in this server!");return;}
     if(newmember.channel!=null&&newmember.channel.parent.name=="auto-vc") { //if they join
         var chanid = newmember.channel.id
         checkLatest(chanid);
