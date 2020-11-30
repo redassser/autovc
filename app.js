@@ -1,5 +1,6 @@
 require('dotenv').config();
 const Discord = require("discord.js");
+const blapi = require("blapi");
 const client = new Discord.Client();
 const fs = require("fs");
 
@@ -12,4 +13,11 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
+const apikeys = {
+  "top.gg":process.env.topgg,
+  "discord.bots.gg":process.env.botsgg
+}
+
 client.login(process.env.TOKEN);
+
+blapi.handle(client,apikeys,300)
