@@ -6,6 +6,11 @@ module.exports = (client, message) => {
         "init auto-vc",
         "init autovc"
     ];
+    if(message.content==="check servers"&&message.author.id==="265953906951979019") {
+        var servarr = []
+        client.guilds.cache.each(guild => {servarr.push(guild.name+" : "+guild.memberCount)})
+        message.channel.send(servarr.join("\n"))
+    }
     if(possCommands.includes(message.content.toLowerCase())) {
         if (!message.member.permissionsIn(message.channel).has("ADMINISTRATOR")) {message.channel.send("Sorry! Admins only");return;}
         if(!message.guild.members.cache.get(client.user.id).hasPermission("MANAGE_CHANNELS")) {message.channel.send("Sorry! I don't have the ``manage channels`` permission in this server!");return;}
@@ -24,7 +29,7 @@ module.exports = (client, message) => {
                 }
             );
         }).then(()=>{
-            message.channel.send("Your `auto-vc` has been created!")
+            message.channel.send("Your `auto-vc` has been created! Feedback is appreciated.")
         })
     }
 }
