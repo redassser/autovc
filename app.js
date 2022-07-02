@@ -1,23 +1,42 @@
-require('dotenv').config();
 const Discord = require("discord.js");
-const blapi = require("blapi");
-const client = new Discord.Client();
+const client = new Discord.Client({
+    intents:[
+        Discord.Intents.FLAGS.GUILDS, 
+        Discord.Intents.FLAGS.GUILD_MESSAGES, 
+        Discord.Intents.FLAGS.GUILD_VOICE_STATES
+    ]
+});
+client.config = require("./config.json")
 const fs = require("fs");
+const Enmap = require('enmap');
+require('dotenv').config();
+const blapi = require("blapi");
 
 fs.readdir("./events/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    const event = require(`./events/${file}`);
-    let eventName = file.split(".")[0];
-    client.on(eventName, event.bind(null, client));
-  });
+    if (err) return console.error(err);
+    files.forEach(file => {
+        const event = require(`./events/${file}`);
+        let eventName = file.split(".")[0];
+        client.on(eventName, event.bind(null, client));
+    });
 });
-
-const apikeys = {
-  "top.gg":process.env.topgg,
-  "discord.bots.gg":process.env.botsgg
-}
-
+  
+client.commands = new Enmap();
+  
+fs.readdir("./commands/", (err, files) => {
+    if (err) return console.error(err);
+    files.forEach(file => {
+        if (!file.endsWith(".js")) return;
+        let props = require(`./commands/${file}`);
+        let commandName = file.split(".")[0];
+        client.commands.set(commandName, props);
+    });
+});
 client.login(process.env.TOKEN);
 
-blapi.handle(client,apikeys,300)
+apiKeys = {
+  "discord.bots.gg": process.env.BOTSGG,
+  "top.gg": process.env.TOPGG
+}
+
+blapi.handle(client, apiKeys, 300);

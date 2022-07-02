@@ -1,4 +1,10 @@
 module.exports = (client,message,array) => {
-    console.log("Prepared");
-    client.user.setPresence({ activity: { name: 'for "init autovc"',type: "WATCHING" }, status: 'online' });
+    console.log("ready")
+    client.user.setPresence({ 
+        activities: [{ 
+            name: "for .autovc || UPDATED",
+            type: "WATCHING"
+        }], 
+        status: 'online' 
+    });
 }

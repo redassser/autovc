@@ -1,25 +1,20 @@
 {
-  "name": "autovc",
-  "description": "Always have a vc open",
-  "version": "1.0.0",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
-  },
-  "engines": {
-    "node": "12.18.3"
-  },
-  "keywords": [
-    "cool",
-    "epic",
-    "nice"
-  ],
-  "author": "Pie",
-  "license": "ISC",
-  "dependencies": {
-    "blapi": "^2.0.1",
-    "discord.js": "^12.4.1",
-    "dotenv": "^8.2.0"
-  }
+    "name": "autovc",
+    "description": "a bot, made by pie",
+    "version": "0.0.0",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "engines": {
+        "node": "16.13.1"
+    },
+    "author": "pie",
+    "license": "ISC",
+    "dependencies": {
+        "blapi": "^2.2.2",
+        "discord.js": "^13.3.1",
+        "dotenv": "^8.2.0",
+        "enmap": "^5.8.2"
+    }
 }
