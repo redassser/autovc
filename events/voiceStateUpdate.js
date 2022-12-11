@@ -1,11 +1,10 @@
-const { ApplicationCommandOptionChannelTypesMixin } = require("discord.js");
-
 module.exports = (client, memberPrev, memberNew) => {
     //AUTOVC
     const channelNames = ["autovc"];
     randomName = () => channelNames[Math.floor(Math.random()*channelNames.length)];
         //randomize name list
-    if(!memberNew.guild.members.me.permissions.has("MANAGE_CHANNELS")) return; 
+    if(!memberNew.guild.members.me.permissions.has("ManageChannels")) return;
+    if(!memberNew.guild.members.me.permissions.has("ViewChannel")) return;  
     var channelNew = memberNew.channel; channelPrev = memberPrev.channel
     if(channelNew!=null&&(channelNew.parent.name=="auto-vc"||channelNew.parent.name=="autovc")) { //if they join
         const parent = channelNew.parent;

@@ -5,10 +5,12 @@ module.exports = {
         .setName("autovc")
         .setDescription("Creates the autovc category. Admins only."),
         async execute(interaction) {
-            if(!interaction.member.permissions.has("ADMINISTRATOR")) 
+            if(!interaction.member.permissions.has("Administrator")) 
                 interaction.reply({ephemeral: true, content: "Sorry! Admins only."});
-            else if(!interaction.appPermissions.has("MANAGE_CHANNELS"))
+            else if(!interaction.appPermissions.has("ManageChannels"))
                 interaction.reply({ephemeral: true, content: "Sorry! I don't have the *manage channels* permission."});
+            else if(!interaction.appPermissions.has("ViewChannel"))
+                interaction.reply({ephemeral: true, content: "Sorry! I don't have the *view channels* permission."});
             else if (interaction.guild.channels.cache.find(h=>h.type==="GUILD_CATEGORY"&&h.name==="autovc"))
                 interaction.reply({ephemeral: true, content: "Sorry! You already have an autovc category."});
             else {

@@ -3,7 +3,7 @@ module.exports = (client,message,array) => {
     client.user.setPresence({ 
         activities: [{ 
             name: "for /autovc",
-            type: "WATCHING"
+            type: 3
         }], 
         status: 'online' 
     });
