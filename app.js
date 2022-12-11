@@ -1,11 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({
-    intents:[
-        Discord.Intents.FLAGS.GUILDS, 
-        Discord.Intents.FLAGS.GUILD_MESSAGES, 
-        Discord.Intents.FLAGS.GUILD_VOICE_STATES
-    ]
-});
+const client = new Discord.Client({ intents: 129 });
 client.config = require("./config.json")
 const fs = require("fs");
 const Enmap = require('enmap');
@@ -39,4 +33,4 @@ apiKeys = {
   "top.gg": process.env.TOPGG
 }
 
-blapi.handle(client, apiKeys, 300);
+//blapi.handle(client, apiKeys, 300);
