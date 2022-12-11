@@ -11,7 +11,7 @@ module.exports = {
                 interaction.reply({ephemeral: true, content: "Sorry! I don't have the *manage channels* permission."});
             else if(!interaction.appPermissions.has("ViewChannel"))
                 interaction.reply({ephemeral: true, content: "Sorry! I don't have the *view channels* permission."});
-            else if (interaction.guild.channels.cache.find(h=>h.type==="GUILD_CATEGORY"&&h.name==="autovc"))
+            else if (interaction.guild.channels.cache.find(h=>h.type===2&&h.name==="autovc"))
                 interaction.reply({ephemeral: true, content: "Sorry! You already have an autovc category."});
             else {
                 await interaction.guild.channels.create({
